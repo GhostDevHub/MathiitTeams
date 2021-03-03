@@ -132,10 +132,13 @@ class RegisterViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
+            
             guard !exists else {
-                self?.alertUserLoginError(message: "Looks like a user account for that email address alderdy exists ")
+                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address alderdy exists")
                 return
             }
+            
+            
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {authResult ,error in
                 
                 guard  authResult != nil , error == nil else {
